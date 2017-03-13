@@ -1,0 +1,23 @@
+---
+ - hosts: slaves
+   remote_user: ubuntu
+   sudo: yes
+   roles:
+      - { role: cmacrae.sensu,
+          sensu_deploy_rabbitmq: false,
+	  sensu_api_host: "",
+          rabbitmq_host: "",
+          rabbitmq_port: 5672,
+          rabbitmq_sensu_user_name: "guest",
+          rabbitmq_sensu_password:  "guest",
+          rabbitmq_sensu_vhost: "/",
+          sensu_deploy_redis: false,
+	  redis_server: false,
+          redis_host: "",
+	  sensu_client_subscriptions: ["all" , "default"] ,
+          sensu_transport: "rabbitmq",
+          sensu_master: false,
+	  sensu_include_dashboard: false,
+          sensu_ssl_gen_certs: false,
+	  sensu_ssl_manage_certs: false,
+ 	  sensu_remote_plugins: ['memory-checks','network-checks','disk-checks','load-checks','process-checks','io-checks','cpu-checks','snmp']  }
